@@ -18,3 +18,7 @@ StaggeredLayoutList(data: self.notes, numberOfColumns: self.numberOfColumns, hor
 
 ## Sample App (iOS, macOS, watchOS, tvOS)
 https://github.com/alfianlosari/SwiftUIStaggeredNote
+
+## Special Thanks
+Inspired by objc.io Swift Talk Building Collection View talk at:
+Building a Collection View (Part 2)
