@@ -11,17 +11,17 @@
 
 import SwiftUI
 
-struct StaggeredList<Elements, Content>: View where Elements: RandomAccessCollection, Elements.Element: Identifiable, Content: View {
+public struct StaggeredList<Elements, Content>: View where Elements: RandomAccessCollection, Elements.Element: Identifiable, Content: View {
     
-    var data: Elements
-    var numberOfColumns = 2
-    var horizontalSpacing: CGFloat = 2
-    var verticalSpacing: CGFloat = 2
-    var sectionInset = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
-    var content: (Elements.Element) -> Content
+    public var data: Elements
+    public var numberOfColumns = 2
+    public var horizontalSpacing: CGFloat = 2
+    public var verticalSpacing: CGFloat = 2
+    public var sectionInset = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    public var content: (Elements.Element) -> Content
     @State private var sizes: [Elements.Element.ID: CGSize] = [:]
     
-    func calculateLayout(containerSize: CGSize) -> (offsets: [Elements.Element.ID: CGSize], contentHeight: CGFloat, columnWidth: CGFloat) {
+    private func calculateLayout(containerSize: CGSize) -> (offsets: [Elements.Element.ID: CGSize], contentHeight: CGFloat, columnWidth: CGFloat) {
         var state = StaggeredLayout(containerSize: containerSize, numberOfColumns: numberOfColumns, horizontalSpacing: horizontalSpacing, verticalSpacing: verticalSpacing, sectionInset: sectionInset)
         var result: [Elements.Element.ID: CGSize] = [:]
         for element in data {
@@ -50,7 +50,7 @@ struct StaggeredList<Elements, Content>: View where Elements: RandomAccessCollec
         }
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { proxy in
             self.bodyHelper(containerSize: proxy.size, layout: self.calculateLayout(containerSize: proxy.size))
         }
