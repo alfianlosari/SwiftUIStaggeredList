@@ -21,4 +21,4 @@ https://github.com/alfianlosari/SwiftUIStaggeredNote
 
 ## Special Thanks
 Inspired by objc.io Swift Talk Building Collection View talk at:
-Building a Collection View (Part 2)
+https://talk.objc.io/episodes/S01E168-building-a-collection-view-part-2
