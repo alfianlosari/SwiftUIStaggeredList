@@ -16,4 +16,5 @@ StaggeredLayoutList(data: self.notes, numberOfColumns: self.numberOfColumns, hor
 }
 ```
 
-
+## Sample App (iOS, macOS, watchOS, tvOS)
+https://github.com/alfianlosari/SwiftUIStaggeredNote
