@@ -14,15 +14,24 @@ import SwiftUI
 public struct StaggeredLayoutList<Elements, Content>: View where Elements: RandomAccessCollection, Elements.Element: Identifiable, Content: View {
     
     public var data: Elements
-    public var numberOfColumns = 2
-    public var horizontalSpacing: CGFloat = 2
-    public var verticalSpacing: CGFloat = 2
-    public var sectionInset = EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+    public var numberOfColumns: Int
+    public var horizontalSpacing: CGFloat
+    public var verticalSpacing: CGFloat
+    public var sectionInsets: EdgeInsets
     public var content: (Elements.Element) -> Content
     @State private var sizes: [Elements.Element.ID: CGSize] = [:]
     
+    public init(data: Elements, numberOfColumns: Int = 2, horizontalSpacing: CGFloat = 2, verticalSpacing: CGFloat = 2, sectionInsets: EdgeInsets = EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8), content: @escaping (Elements.Element) -> Content ) {
+        self.data = data
+        self.numberOfColumns = numberOfColumns
+        self.horizontalSpacing = horizontalSpacing
+        self.verticalSpacing = verticalSpacing
+        self.sectionInsets = sectionInsets
+        self.content = content
+    }
+    
     private func calculateLayout(containerSize: CGSize) -> (offsets: [Elements.Element.ID: CGSize], contentHeight: CGFloat, columnWidth: CGFloat) {
-        var state = StaggeredLayout(containerSize: containerSize, numberOfColumns: numberOfColumns, horizontalSpacing: horizontalSpacing, verticalSpacing: verticalSpacing, sectionInset: sectionInset)
+        var state = StaggeredLayout(containerSize: containerSize, numberOfColumns: numberOfColumns, horizontalSpacing: horizontalSpacing, verticalSpacing: verticalSpacing, sectionInset: sectionInsets)
         var result: [Elements.Element.ID: CGSize] = [:]
         for element in data {
             let rect = state.add(element: sizes[element.id] ?? .zero)
