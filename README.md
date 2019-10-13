@@ -1,3 +1,19 @@
 # StaggeredList
 
-A description of this package.
+A Staggered Pinterest Like Layout using SwiftUI
+
+![Alt text](./promo.png?raw=true "A Staggered Pinterest Like Layout using SwiftUI")
+
+## Installation
+- Add the dependency to your target/project using Swift Package Manager
+- Import framework in your source
+
+## How to use
+Initialize StaggeredLayoutList passing your collection that conforms to `Identifiable`. Vertical and Horitontal Spacing can be passed for adding padding between items. Also Section Insets can be passed to add inset to the List.
+```
+StaggeredLayoutList(data: self.notes, numberOfColumns: self.numberOfColumns, horizontalSpacing: self.spacing, verticalSpacing: self.spacing, sectionInsets: sectionInset) {
+    NoteView(note: $0)
+}
+```
+
+
