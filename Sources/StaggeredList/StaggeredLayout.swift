@@ -18,11 +18,11 @@ struct StaggeredLayout {
     private var currentColumn = 0
     private var yOffsets = [CGFloat]()
 
-    private let sectionInset: NSEdgeInsets
+    private let sectionInset: EdgeInsets
     private let horizontalSpacing: CGFloat
     private let verticalSpacing: CGFloat
     
-    init(containerSize: CGSize, numberOfColumns: Int = 2, horizontalSpacing: CGFloat = 2, verticalSpacing: CGFloat = 2, sectionInset: NSEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8)) {
+    init(containerSize: CGSize, numberOfColumns: Int = 2, horizontalSpacing: CGFloat = 2, verticalSpacing: CGFloat = 2, sectionInset: EdgeInsets = .init(top: 8, leading: 8, bottom: 8, trailing: 8)) {
         assert(numberOfColumns > 0, "Number of columns minimal is 1")
         
         self.horizontalSpacing = horizontalSpacing
@@ -32,13 +32,13 @@ struct StaggeredLayout {
         self.numberOfColumns = numberOfColumns
         
         let totalHorizontalSpacingWidth = CGFloat(numberOfColumns - 1) * horizontalSpacing
-        let insetsWidth = sectionInset.left + sectionInset.right
+        let insetsWidth = sectionInset.leading + sectionInset.trailing
         columnWidth = (containerSize.width - totalHorizontalSpacingWidth - insetsWidth) / CGFloat(numberOfColumns)
         var xOffsets = [CGFloat]()
         var x: CGFloat = 0
         
         for col in 0..<numberOfColumns {
-            x = sectionInset.left + (CGFloat(col) * (columnWidth + horizontalSpacing))
+            x = sectionInset.leading + (CGFloat(col) * (columnWidth + horizontalSpacing))
             xOffsets.append(x)
         }
         

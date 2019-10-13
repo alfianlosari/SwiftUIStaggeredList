@@ -11,13 +11,13 @@
 
 import SwiftUI
 
-public struct StaggeredList<Elements, Content>: View where Elements: RandomAccessCollection, Elements.Element: Identifiable, Content: View {
+public struct StaggeredLayoutList<Elements, Content>: View where Elements: RandomAccessCollection, Elements.Element: Identifiable, Content: View {
     
     public var data: Elements
     public var numberOfColumns = 2
     public var horizontalSpacing: CGFloat = 2
     public var verticalSpacing: CGFloat = 2
-    public var sectionInset = NSEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+    public var sectionInset = EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
     public var content: (Elements.Element) -> Content
     @State private var sizes: [Elements.Element.ID: CGSize] = [:]
     
